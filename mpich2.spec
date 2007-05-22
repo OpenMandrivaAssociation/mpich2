@@ -238,6 +238,9 @@ rm -rf %{buildroot}
 %doc COPYRIGHT README.urpmi
 %{_bindir}/mpd*
 %{_bindir}/mpi*
+%{_bindir}/mpecc.in
+%{_bindir}/mpefc.in
+%{_bindir}/parkill
 %{_mandir}/man1/MPI.1*
 %{_mandir}/man1/mpiexec.1.*
 %config(noreplace) %{_sysconfdir}/mpe_*
