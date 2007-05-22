@@ -1,9 +1,9 @@
 %define	name	mpich2
-%define	version 1.0.4
-%define subversion p1
-%define release	%mkrel 7
+%define	version 1.0.5
+%define subversion p4
+%define release	%mkrel 1
 
-%define	major		1.0.4
+%define	major		1.0.5
 %define	libname		%mklibname mpich 2 %{major}
 %define old_libname	%mklibname mpich 1
 %define mpihome		/home/mpi
