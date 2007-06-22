@@ -1,7 +1,7 @@
 %define	name	mpich2
 %define	version 1.0.5
 %define subversion p4
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 %define	major		1.0.5
 %define	libname		%mklibname mpich 2 %{major}
@@ -16,7 +16,7 @@ Source: 	http://www-unix.mcs.anl.gov/mpi/mpich/downloads/%{name}-%{version}%{sub
 Patch0:		%{name}-1.0.4.soname.patch
 URL: 		http://www-unix.mcs.anl.gov/mpi/mpich/
 License:	BSD-style 
-Group: 		Development/Other
+Group:		System/Cluster
 Requires: 	%{libname} = %{version}
 Requires:	expect
 Requires:	python
@@ -39,7 +39,7 @@ This package provides the libraries that use the standard p4 device.
 
 %package doc
 Summary:	Documentation for developing programs that will use MPICH
-Group:		Development/Other
+Group:		System/Cluster
 
 %description doc
 MPICH is a freely available, portable implementation of MPI, the Standard 
@@ -55,7 +55,7 @@ applications using the MPICH libraries.
 
 %package -n %{libname}
 Summary:	Shared Librairies for MPICH
-Group:		Development/Other
+Group:		System/Cluster
 Conflicts:	%{old_libname} >= 1.2
 Provides:	lib%{name} = %{version}-%{release}
 Conflicts:	libmpich
@@ -65,7 +65,7 @@ Shared Librairies for MPICH
 
 %package -n %{libname}-devel
 Summary:	Headers for developing programs that will use MPICH
-Group:		Development/Other
+Group:		System/Cluster
 Requires:	%{libname} = %{version}
 Conflicts:	%{old_libname}-devel >= 1.2
 Provides:	lib%{name}-devel = %{version}-%{release}
@@ -124,7 +124,7 @@ compile C++ programs using the MPICH libraries.
 
 %package -n mpi2f77
 Summary:	The MPICH wrapper over the Fortran 77 compiler
-Group:		Development/Other
+Group:		System/Cluster
 Conflicts:	mpif77 >= 1.2, lam-devel
 Requires:	gcc-gfortran >= 3.2
 Requires:	%{libname}-devel = %{version}
@@ -143,7 +143,7 @@ compile Fortran 77 (NOT Fortran 90!) programs using the MPICH libraries.
 
 %package -n mpi2f90
 Summary:	The MPICH wrapper over the Fortran 90 compiler
-Group:		Development/Other
+Group:		System/Cluster
 Requires:	gcc-gfortran >= 3.2
 Requires:	%{libname}-devel = %{version}
 
