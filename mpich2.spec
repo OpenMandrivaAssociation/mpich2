@@ -24,7 +24,6 @@ BuildRequires:	gcc-gfortran
 BuildRequires:	python
 BuildConflicts:	g95
 Conflicts:	mpich >= 1.2
-BuildRoot: 	%{_tmppath}/%{name}-%{version}
 
 %description
 MPICH is a freely available, portable implementation of MPI, the Standard 
