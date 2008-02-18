@@ -11,7 +11,7 @@
 Name: 		%{name}
 Version: 	%{version}
 Release: 	%{release}
-Summary: 	MPICH2 is a portable implementation of MPI
+Summary: 	Portable implementation of MPI
 Source: 	http://www-unix.mcs.anl.gov/mpi/mpich/downloads/%{name}-%{version}%{subversion}.tar.bz2
 Patch0:		%{name}-1.0.4.soname.patch
 URL: 		http://www-unix.mcs.anl.gov/mpi/mpich/
