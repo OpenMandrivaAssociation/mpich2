@@ -1,9 +1,8 @@
 %define	name	mpich2
-%define	version 1.0.5
-%define subversion p4
-%define release	%mkrel 3
+%define	version 1.0.7
+%define release	%mkrel 1
 
-%define	major		1.0.5
+%define	major		1.0.7
 %define	libname		%mklibname mpich 2 %{major}
 %define old_libname	%mklibname mpich 1
 %define mpihome		/home/mpi
@@ -12,7 +11,7 @@ Name: 		%{name}
 Version: 	%{version}
 Release: 	%{release}
 Summary: 	Portable implementation of MPI
-Source: 	http://www-unix.mcs.anl.gov/mpi/mpich/downloads/%{name}-%{version}%{subversion}.tar.bz2
+Source: 	http://www-unix.mcs.anl.gov/mpi/mpich/downloads/%{name}-%{version}.tar.gz
 Patch0:		%{name}-1.0.4.soname.patch
 URL: 		http://www-unix.mcs.anl.gov/mpi/mpich/
 License:	BSD-style 
@@ -160,7 +159,7 @@ This package provides the shell script mpif90, with headers, which allows to
 compile Fortran 90 (NOT Fortran 77!) programs using the MPICH libraries.
 
 %prep
-%setup -q -n %{name}-%{version}%{subversion}
+%setup -q -n %{name}-%{version}
 %patch0 -p 1
 
 %build
