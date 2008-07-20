@@ -14,7 +14,7 @@ Version: 	%{version}
 Release: 	%{release}
 Summary: 	Portable implementation of MPI
 Source: 	http://www-unix.mcs.anl.gov/mpi/mpich/downloads/%{name}-%{version}.tar.gz
-Patch0:		%{name}-1.0.4.soname.patch
+Patch0:		%{name}-1.0.7.soname.patch
 URL: 		http://www-unix.mcs.anl.gov/mpi/mpich/
 License:	BSD-style 
 Group:		System/Cluster
@@ -243,6 +243,7 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %doc COPYRIGHT README.urpmi
+%{_bindir}/check_callstack
 %{_bindir}/mpd*
 %{_bindir}/mpi*
 %{_bindir}/mpecc.in
@@ -250,6 +251,7 @@ rm -rf %{buildroot}
 %{_bindir}/parkill
 %{_mandir}/man1/MPI.1*
 %{_mandir}/man1/mpiexec.1.*
+%{_mandir}/man4/MPE*
 %config(noreplace) %{_sysconfdir}/mpe_*
 
 %files -n %{libname}
@@ -264,6 +266,7 @@ rm -rf %{buildroot}
 %{_includedir}/*.mod
 %{_libdir}/*.a
 %{_libdir}/*.so
+%{_libdir}/pkgconfig/*.pc
 %exclude %{_libdir}/lib*-%{major}.so
 
 %files doc
