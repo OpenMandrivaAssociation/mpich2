@@ -73,7 +73,7 @@ Provides:	lib%{name}-devel = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Conflicts:	lam-devel, mpich1-devel
 Obsoletes:	%mklibname -d mpich 2 1.0.4
-Obsoletes;	%mklibname -d mpich 2 1.0.5
+Obsoletes:	%mklibname -d mpich 2 1.0.5
 
 %description -n %{develname}
 MPICH is a freely available, portable implementation of MPI, the Standard 
