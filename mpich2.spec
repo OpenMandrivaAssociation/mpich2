@@ -4,8 +4,10 @@
 
 %define	major		1.0.7
 %define	libname		%mklibname mpich 2 %{major}
+%define develname 	%mklibname mpich 2 -d
 %define old_libname	%mklibname mpich 1
 %define mpihome		/home/mpi
+
 
 Name: 		%{name}
 Version: 	%{version}
@@ -62,7 +64,7 @@ Conflicts:	libmpich
 %description  -n %{libname}
 Shared Librairies for MPICH
 
-%package -n %{libname}-devel
+%package -n %{develname}
 Summary:	Headers for developing programs that will use MPICH
 Group:		System/Cluster
 Requires:	%{libname} = %{version}
@@ -70,8 +72,10 @@ Conflicts:	%{old_libname}-devel >= 1.2
 Provides:	lib%{name}-devel = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Conflicts:	lam-devel, mpich1-devel
+Obsoletes:	%mklibname -d mpich 2 1.0.4
+Obsoletes;	%mklibname -d mpich 2 1.0.5
 
-%description -n %{libname}-devel
+%description -n %{develname}
 MPICH is a freely available, portable implementation of MPI, the Standard 
 for message-passing libraries.
 MPICH-A Portable Implementation of MPI is a MPI Standard conforming library 
@@ -165,7 +169,7 @@ compile Fortran 90 (NOT Fortran 77!) programs using the MPICH libraries.
 %build
 export F90=/usr/bin/gfortran
 
-%configure \
+%configure2_5x \
     --datadir=%{_datadir}/mpich/ \
     --with-docdir=%{_datadir}/doc/%{name}-doc-%{version} \
     --with-htmldir=%{_datadir}/doc/%{name}-doc-%{version}/www \
@@ -252,7 +256,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_libdir}/*-%{major}.so
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %doc COPYRIGHT
 %{_mandir}/man3/*.3*
