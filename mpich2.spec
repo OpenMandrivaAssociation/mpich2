@@ -1,6 +1,6 @@
 %define	name	mpich2
 %define	version 1.0.7
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 %define	major		1.0.7
 %define	libname		%mklibname mpich 2 %{major}
@@ -92,7 +92,7 @@ Summary:	The MPICH wrapper over the C compiler
 Group:		Development/C
 Conflicts:	mpicc >= 1.2, lam-devel
 Requires:	gcc >= 3.2
-Requires:	%{libname}-devel = %{version}
+Requires:	%{develname} = %{version}
 
 %description -n mpi2cc
 MPICH is a freely available, portable implementation of MPI, the Standard 
@@ -111,7 +111,7 @@ Summary:	The MPICH wrapper over the C++ compiler
 Conflicts:	mpic++ >= 1.2, lam-devel
 Group:		Development/C++
 Requires:	gcc-c++ >= 3.2
-Requires:	%{libname}-devel = %{version}
+Requires:	%{develname} = %{version}
 
 %description -n mpi2cxx
 MPICH is a freely available, portable implementation of MPI, the Standard 
@@ -130,7 +130,7 @@ Summary:	The MPICH wrapper over the Fortran 77 compiler
 Group:		System/Cluster
 Conflicts:	mpif77 >= 1.2, lam-devel
 Requires:	gcc-gfortran >= 3.2
-Requires:	%{libname}-devel = %{version}
+Requires:	%{develname} = %{version}
 
 %description -n mpi2f77
 MPICH is a freely available, portable implementation of MPI, the Standard 
@@ -148,7 +148,7 @@ compile Fortran 77 (NOT Fortran 90!) programs using the MPICH libraries.
 Summary:	The MPICH wrapper over the Fortran 90 compiler
 Group:		System/Cluster
 Requires:	gcc-gfortran >= 3.2
-Requires:	%{libname}-devel = %{version}
+Requires:	%{develname} = %{version}
 
 %description -n mpi2f90
 MPICH is a freely available, portable implementation of MPI, the Standard 
