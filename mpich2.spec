@@ -1,8 +1,8 @@
 %define	name	mpich2
-%define	version 1.0.7
-%define release	%mkrel 2
+%define	version 1.0.8
+%define release	%mkrel 1
 
-%define	major		1.0.7
+%define	major		1.0.8
 %define	libname		%mklibname mpich 2 %{major}
 %define develname 	%mklibname mpich 2 -d
 %define old_libname	%mklibname mpich 1
@@ -24,6 +24,7 @@ Requires:	python
 BuildRequires:	gcc-gfortran
 BuildRequires:	python
 BuildConflicts:	g95
+BuildRequires:	libx11-devel
 Conflicts:	mpich >= 1.2
 BuildRoot: 	%{_tmppath}/%{name}-%{version}
 
@@ -171,8 +172,8 @@ export F90=/usr/bin/gfortran
 
 %configure2_5x \
     --datadir=%{_datadir}/mpich/ \
-    --with-docdir=%{_datadir}/doc/%{name}-doc-%{version} \
-    --with-htmldir=%{_datadir}/doc/%{name}-doc-%{version}/www \
+    --docdir=%{_datadir}/doc/%{name}-doc-%{version} \
+    --htmldir=%{_datadir}/doc/%{name}-doc-%{version}/www \
     --enable-cache \
     --with-mpe \
     --enable-cxx \
@@ -253,6 +254,11 @@ rm -rf %{buildroot}
 %{_mandir}/man1/mpiexec.1.*
 %{_mandir}/man4/MPE*
 %config(noreplace) %{_sysconfdir}/mpe_*
+%config(noreplace) %{_sysconfdir}/mpixxx_opts.conf
+%exclude %{_bindir}/mpicc
+%exclude %{_bindir}/mpicxx
+%exclude %{_bindir}/mpif77
+%exclude %{_bindir}/mpif90
 
 %files -n %{libname}
 %defattr(-,root,root)
