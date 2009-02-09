@@ -15,6 +15,7 @@ Release: 	%{release}
 Summary: 	Portable implementation of MPI
 Source: 	http://www-unix.mcs.anl.gov/mpi/mpich/downloads/%{name}-%{version}.tar.gz
 Patch0:		%{name}-1.0.7.soname.patch
+Patch1:		mpich2-1.0.8-fix-str-fmt.patch
 URL: 		http://www-unix.mcs.anl.gov/mpi/mpich/
 License:	BSD-style 
 Group:		System/Cluster
@@ -165,7 +166,8 @@ compile Fortran 90 (NOT Fortran 77!) programs using the MPICH libraries.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p 1
+%patch0 -p1
+%patch1 -p0
 
 %build
 export F90=/usr/bin/gfortran
