@@ -1,6 +1,6 @@
 %define	name	mpich2
 %define	version 1.0.8
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 %define	major		1.0.8
 %define	libname		%mklibname mpich 2 %{major}
