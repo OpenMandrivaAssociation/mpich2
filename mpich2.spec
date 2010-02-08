@@ -1,8 +1,8 @@
 %define	name	mpich2
-%define	version 1.0.8
-%define release	%mkrel 2
+%define	version 1.2.1
+%define release	%mkrel 1
 
-%define	major		1.0.8
+%define	major		1.2
 %define	libname		%mklibname mpich 2 %{major}
 %define develname 	%mklibname mpich 2 -d
 %define old_libname	%mklibname mpich 1
@@ -16,6 +16,7 @@ Summary: 	Portable implementation of MPI
 Source: 	http://www-unix.mcs.anl.gov/mpi/mpich/downloads/%{name}-%{version}.tar.gz
 Patch0:		%{name}-1.0.7.soname.patch
 Patch1:		mpich2-1.0.8-fix-str-fmt.patch
+Patch2:		mpich2-modules.patch
 URL: 		http://www-unix.mcs.anl.gov/mpi/mpich/
 License:	BSD-style 
 Group:		System/Cluster
@@ -166,22 +167,33 @@ compile Fortran 90 (NOT Fortran 77!) programs using the MPICH libraries.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1
+#%patch0 -p1
 %patch1 -p0
+%patch2 -p0
 
 %build
 export F90=/usr/bin/gfortran
+export F77=/usr/bin/gfortran
 
 %configure2_5x \
-    --datadir=%{_datadir}/mpich/ \
-    --docdir=%{_datadir}/doc/%{name}-doc-%{version} \
-    --htmldir=%{_datadir}/doc/%{name}-doc-%{version}/www \
-    --enable-cache \
-    --with-mpe \
-    --enable-cxx \
-    --with-arch=LINUX \
-    --enable-sharedlibs=gcc \
-    --disable-weak-symbols
+	--datadir=%{_datadir}/mpich/ \
+	--docdir=%{_datadir}/doc/%{name}-doc-%{version} \
+	--htmldir=%{_datadir}/doc/%{name}-doc-%{version}/www \
+	--enable-cache \
+	--enable-f77 \
+	--enable-f90 \
+	--enable-cxx \
+	--enable-romio \
+	--enable-smpcoll \
+	--enable-async-progress \
+	--enable-mpe \
+	--enable-threads=default \
+	--with-mpe \
+	--with-arch=LINUX \
+	--enable-sharedlibs=gcc \
+	--disable-weak-symbols
+
+#	--enable-nmpi-as-mpi \
 make
 
 %install
@@ -249,11 +261,9 @@ rm -rf %{buildroot}
 %{_bindir}/check_callstack
 %{_bindir}/mpd*
 %{_bindir}/mpi*
-%{_bindir}/mpecc.in
-%{_bindir}/mpefc.in
+%{_bindir}/pmi_proxy 
 %{_bindir}/parkill
-%{_mandir}/man1/MPI.1*
-%{_mandir}/man1/mpiexec.1.*
+%{_mandir}/man1/*.lzma
 %{_mandir}/man4/MPE*
 %config(noreplace) %{_sysconfdir}/mpe_*
 %config(noreplace) %{_sysconfdir}/mpixxx_opts.conf
@@ -264,7 +274,8 @@ rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
-%{_libdir}/*-%{major}.so
+%{_libdir}/*.so.%{major}
+%{_libdir}/*.so.1
 
 %files -n %{develname}
 %defattr(-,root,root)
@@ -272,10 +283,10 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 %{_includedir}/*.h
 %{_includedir}/*.mod
+%{_includedir}/primitives/opa*.h
 %{_libdir}/*.a
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-%exclude %{_libdir}/lib*-%{major}.so
 
 %files doc
 %defattr(-,root,root)
@@ -310,3 +321,4 @@ rm -rf %{buildroot}
 %{_mandir}/man1/mpif90.1*
 
 
+%changelog
