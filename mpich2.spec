@@ -17,6 +17,7 @@ Source: 	http://www-unix.mcs.anl.gov/mpi/mpich/downloads/%{name}-%{version}.tar.
 Patch0:		%{name}-1.0.7.soname.patch
 Patch1:		mpich2-1.0.8-fix-str-fmt.patch
 Patch2:		mpich2-modules.patch
+Patch3:		mpich2_mpiexec.c.patch
 URL: 		http://www-unix.mcs.anl.gov/mpi/mpich/
 License:	BSD-style 
 Group:		System/Cluster
@@ -170,6 +171,7 @@ compile Fortran 90 (NOT Fortran 77!) programs using the MPICH libraries.
 #%patch0 -p1
 %patch1 -p0
 %patch2 -p0
+%patch3 -p1
 
 %build
 export F90=/usr/bin/gfortran
