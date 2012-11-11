@@ -1,0 +1,11 @@
+--- src/mpe2/src/collchk/src/same_op.c~	2007-11-02 23:50:19.000000000 +0100
++++ src/mpe2/src/collchk/src/same_op.c	2009-02-09 08:34:51.000000000 +0100
+@@ -51,7 +51,7 @@
+     MPI_Comm_size(comm, &s);
+ 
+     sprintf(err_str, COLLCHK_NO_ERROR_STR);
+-    sprintf(op_str, CollChk_get_op_string(op));
++    sprintf(op_str, "%s", CollChk_get_op_string(op));
+ 
+     if (r == 0) {
+         /* send the name of the op to the other processes */

@@ -1,0 +1,11 @@
+--- mpich2-1.2.1/src/pm/gforker/mpiexec.c	2008-10-25 00:55:57.000000000 +0200
++++ mpich2-1.2.1.patched/src/pm/gforker/mpiexec.c	2010-02-08 18:32:04.000000000 +0100
+@@ -264,7 +264,7 @@
+ void mpiexec_usage( const char *msg )
+ {
+     if (msg) {
+-	MPIU_Error_printf( msg );
++	MPIU_Error_printf("%s", msg );
+ 	if (msg[strlen(msg)-1] != '\n') {
+ 	    MPIU_Error_printf( "\n" );
+ 	}
