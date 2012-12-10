@@ -1,2 +1,3 @@
 sources:
-  "mpich2-1.2.1.tar.gz:"	0f7e104143cb4449afcec542e44098423e1627cb
+  mpich2-1.2.1.tar.gz: 0f7e104143cb4449afcec542e44098423e1627cb
+---
