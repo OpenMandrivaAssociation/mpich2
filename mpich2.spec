@@ -23,7 +23,7 @@ Requires:	python
 BuildRequires:	gcc-gfortran
 BuildRequires:	python
 BuildConflicts:	g95
-BuildRequires:	libx11-devel
+BuildRequires:	pkgconfig(x11)
 Conflicts:	mpich >= 1.2
 
 %description
