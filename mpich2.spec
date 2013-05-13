@@ -7,7 +7,7 @@
 
 Name: 		mpich2
 Version: 	1.2.1
-Release: 	2
+Release: 	3
 Summary: 	Portable implementation of MPI
 Source0: 	http://www-unix.mcs.anl.gov/mpi/mpich/downloads/%{name}-%{version}.tar.gz
 Patch0:		%{name}-1.0.7.soname.patch
