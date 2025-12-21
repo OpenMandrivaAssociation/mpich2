@@ -20,6 +20,11 @@ Group:		System/Cluster
 Requires: 	%{libname} = %{version}
 Requires:	expect
 Requires:	python
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gcc-gfortran
 BuildRequires:	python
 BuildConflicts:	g95
